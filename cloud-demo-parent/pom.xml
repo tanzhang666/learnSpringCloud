@@ -11,6 +11,8 @@
 
   <modules>
     <module>cloud-demo-provider-payment8001</module>
+    <module>cloud-demo-consumer-order80</module>
+      <module>cloud-demo-api-commons</module>
   </modules>
 
   <name>cloud-demo-parent</name>
@@ -86,6 +88,7 @@
   </dependencyManagement>
 
   <build>
+    <finalName>cloud-demo-parent</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>

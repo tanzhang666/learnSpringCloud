@@ -30,7 +30,7 @@ public class PaymentController {
     @PostMapping("/payments")
     public CommonResult createPayment(@RequestBody Payment payment){
         int result = paymentService.createPayment(payment);
-        log.info("****插入结果"+result);
+        log.info("****插入结果为："+result);
         if(result>0){
             return new CommonResult(200,"插入数据库成功",result);
         }else {
