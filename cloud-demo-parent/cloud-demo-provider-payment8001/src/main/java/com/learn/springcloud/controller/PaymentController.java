@@ -16,6 +16,7 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
+    //动态指定端口号
     @Value("${server.port}")
     private String serverPort;
 

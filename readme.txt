@@ -11,13 +11,24 @@ cloud升级
 eureka 停止更新 很多老项目用 netflix公司
 Zookeeper 传统推荐
 consul
-nacos alibaba
+nacos alibaba 推荐使用
 三者区别以及如何选择
 什么是服务治理
 Spring Cloud封装了Netflix公司开发的Eureka模块来实现服务治理，
 在传统的rpc远程调用框架中，管理每个服务与服务之间比较复杂，
 所以需要服务治理来管理服务之间的依赖关系，可以实现服务调用，负载均衡，容错等，实现服务发现及注册。
-注册服务器的高可用就是会相互注册 互相守望
+注册服务器的高可用就是 相互注册 互相守望
+eureka
+#  注册中心关闭自我保护机制，修改检查失效服务的时间。
+# eureka:
+#  server:
+#    enable-self-preservation: false
+#    eviction-interval-timer-in-ms: 3000
+#  2、 微服务修改减短服务心跳的时间。
+# 默认90秒
+# lease-expiration-duration-in-seconds:  10
+# 默认30秒
+# lease-renewal-interval-in-seconds:  3
 服务调用：
 rubbon
 loadBalancer

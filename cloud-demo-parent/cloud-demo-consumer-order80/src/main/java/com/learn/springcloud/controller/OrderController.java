@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 public class OrderController {
 
 //    private static final String PAYMENT_SEV= "http://localhost:8001";
+    //多台服务端 无法确定提供服务的地址 所以此时使用服务名指定
     private static final String PAYMENT_SEV = "http://CLOUD-PAYMENT-SERVICE";
 
     @Autowired

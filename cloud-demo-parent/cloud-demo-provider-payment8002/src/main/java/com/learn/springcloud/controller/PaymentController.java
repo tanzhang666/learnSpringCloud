@@ -20,6 +20,7 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
+    //服务发现
     @Autowired
     private DiscoveryClient discoveryClient;
 
@@ -53,7 +54,7 @@ public class PaymentController {
     public Object discovery(){
         List<String> services = discoveryClient.getServices();
         for (String service : services) {
-            log.info("****service"+service);
+            log.info("****com.learn.springcloud.service"+service);
         }
         List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
         for (ServiceInstance instance : instances) {
