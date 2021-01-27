@@ -13,6 +13,10 @@
     <module>cloud-demo-provider-payment8001</module>
     <module>cloud-demo-consumer-order80</module>
       <module>cloud-demo-api-commons</module>
+    <module>cloud-demo-eureka-server7001</module>
+      <module>cloud-demo-eureka-server7002</module>
+    <module>cloud-demo-eureka-server7003</module>
+      <module>cloud-demo-provider-payment8002</module>
   </modules>
 
   <name>cloud-demo-parent</name>
