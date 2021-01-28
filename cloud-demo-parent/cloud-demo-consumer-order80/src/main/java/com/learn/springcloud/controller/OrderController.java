@@ -3,14 +3,20 @@ package com.learn.springcloud.controller;
 
 import com.learn.springcloud.entities.CommonResult;
 import com.learn.springcloud.entities.Payment;
+import com.learn.springcloud.lb.LoadBalancer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.net.URI;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -23,6 +29,11 @@ public class OrderController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    @Autowired
+    private LoadBalancer lb;
 
     @GetMapping("/consumer/payments")
     public CommonResult<Payment> create(@RequestBody Payment payment){
@@ -47,6 +58,18 @@ public class OrderController {
         }else {
             return new CommonResult(444,"操作失败");
         }
+    }
+
+    @GetMapping("/consumer/payment/lb")
+    public String getPaymentLb(){
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        if(instances==null || instances.size()<=0){
+            return null;
+        }
+        ServiceInstance serviceInstance=lb.instances(instances);
+        URI uri = serviceInstance.getUri();
+        log.info(uri.toString());
+        return restTemplate.getForObject(uri+"/payment/lb",String.class);
     }
 
 }
