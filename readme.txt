@@ -45,10 +45,13 @@ loadBalancer 未来替代方案 spring官方
 只用在消费端 提供接口与接口之间的调用
 feign 停止维护
 OpenFeign 推荐使用
+第三部分：
 服务降级：
-Hystrix 停止更新 国内仍有很多公司再用
+Hystrix 停止更新进入维护状态 男默女泪的事 netflix
+国内仍有很多公司再用 设计理念十分优秀 服务降级 熔断 接近实时的监控
+
 Resilience 国外推荐
-sentinel alibaba 推荐
+sentinel alibaba 国内推荐
 服务网关：
 zuul 停止更新
 zuul2 跳票

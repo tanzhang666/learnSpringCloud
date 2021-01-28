@@ -22,6 +22,7 @@
       <module>cloud-demo-provider-payment8004</module>
       <module>cloud-demo-consumercon-order80</module>
       <module>cloud-demo-consumer-feign-order80</module>
+      <module>cloud-demo-provider-hystrix-payment8001</module>
   </modules>
 
   <name>cloud-demo-parent</name>
