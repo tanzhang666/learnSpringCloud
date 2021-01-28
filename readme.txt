@@ -41,6 +41,8 @@ ribbon和ngnix区别
 ngnix是服务器端负载均衡 客户端请求都会交给ngnix 然后由ngnix实现转发 即负载均衡是由服务器端实现的
 ribbon本地负载均衡 在调用微服务接口时
 loadBalancer 未来替代方案 spring官方
+服务接口调用：
+只用在消费端 提供接口与接口之间的调用
 feign 停止维护
 OpenFeign 推荐使用
 服务降级：
