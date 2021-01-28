@@ -7,6 +7,7 @@ Maven 3.5及以上
 Mysql 5.7及以上
 
 cloud升级
+第一部分：
 服务注册中心：
 eureka 停止更新 很多老项目用 netflix公司
 Zookeeper 传统推荐
@@ -29,9 +30,17 @@ eureka
 # lease-expiration-duration-in-seconds:  10
 # 默认30秒
 # lease-renewal-interval-in-seconds:  3
+第二部分：
 服务调用：
-rubbon
-loadBalancer
+ribbon 维护模式（停止更新 修复blocked级别的bug）netflix
+是基于netflix ribbon实现的一套客户端 在消费者侧负载均衡的工具
+简单来说 ribbon是netflix开发的开源项目 主要功能是提供客户端软件的软件负载均衡算法和服务调用
+ribbon客户端组件提供一系列的配置项如连接超时 重试
+简单地说就是在配置文件中列出loadbalancer后面的机器，ribbon自动帮助你基于某种规则去连接这些机器
+ribbon和ngnix区别
+ngnix是服务器端负载均衡 客户端请求都会交给ngnix 然后由ngnix实现转发 即负载均衡是由服务器端实现的
+ribbon本地负载均衡 在调用微服务接口时
+loadBalancer 未来替代方案 spring官方
 feign 停止维护
 OpenFeign 推荐使用
 服务降级：

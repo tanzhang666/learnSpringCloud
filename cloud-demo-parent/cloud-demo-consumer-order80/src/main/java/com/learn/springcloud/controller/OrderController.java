@@ -5,6 +5,7 @@ import com.learn.springcloud.entities.CommonResult;
 import com.learn.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,11 +30,23 @@ public class OrderController {
         return restTemplate.postForObject(PAYMENT_SEV +"/payments",payment,CommonResult.class);
     }
 
+    //getObject返回为响应体中对象转化成的json串
     @GetMapping("/consumer/payments/{id}")
     public CommonResult<Payment> get(@PathVariable Long id){
         log.info("查询id为：",id);
         return restTemplate.getForObject(PAYMENT_SEV +"/payments/"+id,CommonResult.class);
     }
 
+    //getForEntity返回responseEntity对象 返回信息更详细 响应头 状态码 响应体
+    @GetMapping("/consumer/entity/payments/{id}")
+    public CommonResult<Payment> get2(@PathVariable Long id){
+        log.info("查询id为：",id);
+        ResponseEntity<CommonResult> forEntity = restTemplate.getForEntity(PAYMENT_SEV + "/payments/" + id, CommonResult.class);
+        if(forEntity.getStatusCode().is2xxSuccessful()){
+            return forEntity.getBody();
+        }else {
+            return new CommonResult(444,"操作失败");
+        }
+    }
 
 }
