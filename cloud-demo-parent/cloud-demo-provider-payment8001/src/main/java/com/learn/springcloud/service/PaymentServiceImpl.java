@@ -1,4 +1,4 @@
-package com.learn.springcloud.service.impl;
+package com.learn.springcloud.service;
 
 import com.learn.springcloud.dao.PaymentDao;
 import com.learn.springcloud.entities.Payment;

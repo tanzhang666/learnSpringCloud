@@ -9,5 +9,6 @@ eureka:
     #设置于eureka交互的地址查询服务和注册服务地址
     service-url:
       #多台server机器
-      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
-      #单机版 defaultZone: http://eureka7001.com/eureka/  http://${eureka.instance.hostname}:${server.port}/eureka/
+#      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://eureka7001.com/eureka/
+#      http://${eureka.instance.hostname}:${server.port}/eureka/
