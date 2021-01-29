@@ -26,4 +26,10 @@ public class PaymentController {
         return paymentService.paymentInfoFail(id);
     }
 
+    @GetMapping("/payment/break/{id}")
+    public String circuitBreak(@PathVariable Integer id)
+    {
+        return paymentService.paymentInfoFailBreak(id);
+    }
+
 }

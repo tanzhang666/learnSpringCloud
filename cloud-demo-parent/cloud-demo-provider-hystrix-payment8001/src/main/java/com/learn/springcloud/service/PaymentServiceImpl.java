@@ -1,5 +1,6 @@
 package com.learn.springcloud.service;
 
+import cn.hutool.core.util.IdUtil;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.stereotype.Service;
@@ -35,4 +36,25 @@ public class PaymentServiceImpl implements PaymentService {
     public String paymentInfoTimeoutHandler(Integer id){
         return "线程池"+Thread.currentThread().getName()+" 8001系统繁忙 请稍后再试 "+ id;
     }
+
+    //开启服务熔断
+    //在10秒内需要发送至少10个请求，百分之60的请求失败 会服务先降级再熔断 熔断之后 隔一段时间会慢慢恢复正常
+    @HystrixCommand(fallbackMethod = "paymentInfoFailBreakFallBack",commandProperties = {
+            @HystrixProperty(name = "circuitBreaker.enabled",value = "true"),
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold",value = "10"),
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds",value = "10000"),
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage",value = "60"),
+    })
+    public String paymentInfoFailBreak(Integer id){
+        if(id<0) {
+            throw new RuntimeException("id 不能为负数");
+        }
+        String simpleUUID = IdUtil.simpleUUID();
+        return Thread.currentThread().getName()+"\t"+"调用成功，流水号："+simpleUUID;
+    }
+
+    public String paymentInfoFailBreakFallBack(Integer id){
+        return "id 不能为负数 id:"+id;
+    }
+
 }

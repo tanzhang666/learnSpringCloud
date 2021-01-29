@@ -4,4 +4,6 @@ public interface PaymentService {
     String paymentInfoSuccess(Integer id);
 
     String paymentInfoFail(Integer id);
+
+    String paymentInfoFailBreak(Integer id);
 }
