@@ -49,9 +49,9 @@ OpenFeign 推荐使用
 服务降级：
 Hystrix 停止更新进入维护状态 男默女泪的事 netflix
 国内仍有很多公司再用 设计理念十分优秀 服务降级 熔断 接近实时的监控
-
 Resilience 国外推荐
 sentinel alibaba 国内推荐
+第四部分：
 服务网关：
 zuul 停止更新
 zuul2 跳票
@@ -62,3 +62,7 @@ nacos
 服务总线
 bus 停止更新
 nacos
+分布式服务配置中心：
+config+bus
+nacos 阿里
+apollo 携程开源
