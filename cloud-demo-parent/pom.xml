@@ -28,6 +28,7 @@
     <module>cloud-demo-gateway-gateway9527</module>
       <module>cloud-demo-config-center3344</module>
       <module>cloud-demo-config-client3355</module>
+      <module>cloud-demo-config-bus-client3366</module>
   </modules>
 
   <name>cloud-demo-parent</name>

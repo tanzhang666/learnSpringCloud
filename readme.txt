@@ -60,7 +60,7 @@ gateway 推荐 spring官方
 config 停止更新
 nacos
 服务总线
-bus 停止更新
+bus 停止更新 支持的消息代理 rabbitmq kafka 配合config实现的配置的动态刷新
 nacos
 分布式服务配置中心：
 config+bus
